@@ -8,7 +8,7 @@ mkdir -p "$BACKUP_DIR"
 if mv /etc/yum.repos.d/*.repo "$BACKUP_DIR/" 2>/dev/null; then
     echo "旧的 Yum 源配置文件已备份到 $BACKUP_DIR"
 else
-    echo "警告：没有找到需要备份的 .repo 文件或备份失败。"
+    echo "警告：没有找到需要备份的 .repo 文件或备份失败"
 fi
 
 # 生成新配置
@@ -33,14 +33,15 @@ baseurl=http://repo.huaweicloud.com/hce/$releasever/debuginfo/$basearch/
 enabled=0
 gpgcheck=1
 gpgkey=http://repo.huaweicloud.com/hce/$releasever/debuginfo/RPM-GPG-KEY-HCE-2
+EOF
 
-echo "新的 Yum 源配置文件已生成。"
+echo "新的 Yum 源配置文件已生成"
 
 # 清理缓存并更新
 if yum clean all && yum makecache; then
-    echo "Yum 缓存已成功清理并更新。"
+    echo "Yum 缓存已成功清理并更新"
 else
-    echo "警告：清理和更新 Yum 缓存时发生错误。"
+    echo "警告：清理和更新 Yum 缓存时发生错误"
 fi
 
 echo "Yum 源更新完成！"
