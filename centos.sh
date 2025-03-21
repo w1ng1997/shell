@@ -14,13 +14,11 @@ fi
 # 生成新配置
 cat > /etc/yum.repos.d/base.repo << EOF
 [base]
-name=CentOS-$releasever - Base - mirrors.aliyun.com
-failovermethod=priority
-baseurl=http://mirrors.aliyun.com/centos/$releasever/os/$basearch/
-        http://mirrors.aliyuncs.com/centos/$releasever/os/$basearch/
-        http://mirrors.cloud.aliyuncs.com/centos/$releasever/os/$basearch/
+name=HCE $releasever base
+baseurl=http://repo.huaweicloud.com/hce/$releasever/os/$basearch/
+enabled=1
 gpgcheck=1
-gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+gpgkey=http://repo.huaweicloud.com/hce/$releasever/os/RPM-GPG-KEY-HCE-2
 EOF
 
 echo "新的 Yum 源配置文件已生成。"
