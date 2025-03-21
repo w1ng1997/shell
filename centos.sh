@@ -12,14 +12,27 @@ else
 fi
 
 # 生成新配置
-cat > /etc/yum.repos.d/base.repo << EOF
+cat > /etc/yum.repos.d/base.repo << 'EOF'
 [base]
 name=HCE $releasever base
 baseurl=http://repo.huaweicloud.com/hce/$releasever/os/$basearch/
 enabled=1
 gpgcheck=1
 gpgkey=http://repo.huaweicloud.com/hce/$releasever/os/RPM-GPG-KEY-HCE-2
-EOF
+
+[updates]
+name=HCE $releasever updates
+baseurl=http://repo.huaweicloud.com/hce/$releasever/updates/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=http://repo.huaweicloud.com/hce/$releasever/updates/RPM-GPG-KEY-HCE-2
+
+[debuginfo]
+name=HCE $releasever debuginfo
+baseurl=http://repo.huaweicloud.com/hce/$releasever/debuginfo/$basearch/
+enabled=0
+gpgcheck=1
+gpgkey=http://repo.huaweicloud.com/hce/$releasever/debuginfo/RPM-GPG-KEY-HCE-2
 
 echo "新的 Yum 源配置文件已生成。"
 
